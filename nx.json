@@ -25,6 +25,9 @@
   "projects": {
     "api-spec": {
       "tags": []
+    },
+    "backend": {
+      "tags": []
     }
   }
 }
