@@ -27,6 +27,7 @@
   },
   "private": true,
   "dependencies": {
+    "cors": "^2.8.5",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
