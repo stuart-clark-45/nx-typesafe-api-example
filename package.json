@@ -39,7 +39,7 @@
     "regenerator-runtime": "0.13.7",
     "styled-components": "5.2.1",
     "tslib": "^2.0.0",
-    "typesafe-api": "^0.3.1"
+    "typesafe-api": "^0.3.2"
   },
   "devDependencies": {
     "@babel/core": "7.12.13",
