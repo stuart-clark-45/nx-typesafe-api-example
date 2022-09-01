@@ -53,6 +53,56 @@
         }
       }
     },
+    "express": {
+      "root": "apps/express",
+      "sourceRoot": "apps/express/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/express",
+            "main": "apps/express/src/main.ts",
+            "tsConfig": "apps/express/tsconfig.app.json",
+            "assets": ["apps/express/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/express/src/environments/environment.ts",
+                  "with": "apps/express/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "express:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/express/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/express"],
+          "options": {
+            "jestConfig": "apps/express/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "frontend": {
       "root": "apps/frontend",
       "sourceRoot": "apps/frontend/src",
@@ -153,19 +203,19 @@
         }
       }
     },
-    "express": {
-      "root": "apps/express",
-      "sourceRoot": "apps/express/src",
+    "serverless": {
+      "root": "apps/serverless",
+      "sourceRoot": "apps/serverless/src",
       "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/express",
-            "main": "apps/express/src/main.ts",
-            "tsConfig": "apps/express/tsconfig.app.json",
-            "assets": ["apps/express/src/assets"]
+            "outputPath": "dist/apps/serverless",
+            "main": "apps/serverless/src/main.ts",
+            "tsConfig": "apps/serverless/tsconfig.app.json",
+            "assets": ["apps/serverless/src/assets"]
           },
           "configurations": {
             "production": {
@@ -174,8 +224,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "apps/express/src/environments/environment.ts",
-                  "with": "apps/express/src/environments/environment.prod.ts"
+                  "replace": "apps/serverless/src/environments/environment.ts",
+                  "with": "apps/serverless/src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -184,20 +234,20 @@
         "serve": {
           "executor": "@nrwl/node:execute",
           "options": {
-            "buildTarget": "express:build"
+            "buildTarget": "serverless:build"
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/express/**/*.ts"]
+            "lintFilePatterns": ["apps/serverless/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/express"],
+          "outputs": ["coverage/apps/serverless"],
           "options": {
-            "jestConfig": "apps/express/jest.config.js",
+            "jestConfig": "apps/serverless/jest.config.js",
             "passWithNoTests": true
           }
         }
