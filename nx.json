@@ -26,15 +26,15 @@
     "api-spec": {
       "tags": []
     },
-    "backend": {
-      "tags": []
-    },
     "frontend": {
       "tags": []
     },
     "frontend-e2e": {
       "tags": [],
       "implicitDependencies": ["frontend"]
+    },
+    "express": {
+      "tags": []
     }
   }
 }
