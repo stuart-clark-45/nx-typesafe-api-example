@@ -26,9 +26,6 @@
     "api-spec": {
       "tags": []
     },
-    "express": {
-      "tags": []
-    },
     "frontend": {
       "tags": []
     },
@@ -36,7 +33,7 @@
       "tags": [],
       "implicitDependencies": ["frontend"]
     },
-    "serverless": {
+    "express": {
       "tags": []
     }
   }
