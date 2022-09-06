@@ -232,9 +232,10 @@
           }
         },
         "serve": {
-          "executor": "@nrwl/node:execute",
+          "builder": "@nrwl/workspace:run-commands",
           "options": {
-            "buildTarget": "serverless:build"
+            "command": "npx sls offline --httpPort 7810",
+            "cwd": "apps/serverless"
           }
         },
         "lint": {

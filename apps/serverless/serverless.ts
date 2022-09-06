@@ -5,7 +5,7 @@ import helloWorld from './src/functions/hello-world';
 const serverlessConfiguration: AWS  = {
   service: 'nx-typesafe-api-serverless',
   frameworkVersion: '3',
-  plugins: ['serverless-webpack'],
+  plugins: ['serverless-webpack', 'serverless-offline'],
   provider: {
     name: 'aws',
     runtime: 'nodejs16.x',
