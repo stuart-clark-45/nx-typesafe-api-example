@@ -22,17 +22,20 @@ export class RootApiClient extends CustomApiClient {
 
   // You can also add a custom constructor to abstract away the details of your
   // default request options
-  constructor(baseUrl: string, apiKey: string) {
+  constructor(baseUrl: string, private apiKey: string) {
     super({
       baseUrl,
-      defaultReqOptions: {
-        headers: {
-          authorization: apiKey
-        }
-      }
     });
   }
 
-  // Here we add the {@link HelloApiClient} as a child of {@link RootApiClient}
+  public async getDefaultReqOptions(): Promise<DefaultReqOpts> {
+    return {
+      headers: {
+        authorization: this.apiKey
+      }
+    };
+  }
+
+// Here we add the {@link HelloApiClient} as a child of {@link RootApiClient}
   public helloApi = (): HelloApiClient => new HelloApiClient(this.getChildParams());
 }
