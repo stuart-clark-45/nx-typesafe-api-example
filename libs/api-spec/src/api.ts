@@ -18,8 +18,8 @@ export type DefaultErrorCodes = 500 | 403;
 
 // Create an interface to help us build our endpoints, this just saves adding {@code DefaultReqOpts}
 // and {@code DefaultErrorType} to every endpoint we create
-export interface ExampleApiEndpoint<
+export type ExampleApiEndpoint<
   ReqOpt extends ReqOptions,
   RespOpt extends ResOptions,
   E = ErrorType<DefaultErrorCodes>,
-  > extends EndpointDef<DefaultReqOpts, ReqOpt, RespOpt, E> {}
+  > = EndpointDef<DefaultReqOpts, ReqOpt, RespOpt, E>
