@@ -1,6 +1,6 @@
 import type { AWS } from '@serverless/typescript';
 
-import hello from './src/functions/hello';
+import helloWorld from './src/functions/hello-world';
 
 const serverlessConfiguration: AWS  = {
   service: 'nx-typesafe-api-serverless',
@@ -18,7 +18,7 @@ const serverlessConfiguration: AWS  = {
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
     }
   },
-  functions: { hello },
+  functions: { helloWorld },
   package: { individually: true },
   custom: {
     webpack: {
