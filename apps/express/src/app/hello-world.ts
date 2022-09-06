@@ -21,7 +21,7 @@ export const helloWorldController: Controller<HelloWorldEndpointDef> = (
 
   // No surprises, this body is typesafe too!
   res.send({
-    msg: `Hello ${name}!`,
+    msg: `Hello ${name} from an express backend`,
     date: new Date(),
   });
 };
