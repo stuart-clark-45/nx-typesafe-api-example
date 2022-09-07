@@ -3,9 +3,16 @@ import {
   ErrorHandlers,
   handleError,
   HelloWorldEndpointDef,
-  RootApiClient
+  RootApiClient,
 } from '@nx-typesafe-api-example/api-spec';
-import { Box, Button, CardHeader, Container, TextField, Typography } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  CardHeader,
+  Container,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 
 const baseUrl = 'http://localhost:7809';
 
@@ -37,7 +44,8 @@ export function App() {
   // Define onClick function that calls the endpoint and handles any errors
   const onClick = async () => {
     try {
-      const { msg } = await helloApi.helloWorld(name);
+      const response = await helloApi.helloWorld(name);
+      const { msg } = response.data;
       setResponseText(msg);
     } catch (err) {
       handleError(err as any, callHelloWorldError);
