@@ -14,14 +14,17 @@ import {
   Typography,
 } from '@material-ui/core';
 
-const baseUrl = 'http://localhost:7809';
+const expressUrl = 'http://localhost:7809';
+const serverlessUrl = ' http://localhost:7810/dev'
 
 export function App() {
   const [name, setName] = useState('');
   const [apiKey, setApiKey] = useState('');
   const [responseText, setResponseText] = useState('');
+  const [expressBackend, setExpressBackend] = useState(true);
 
   // Init the API client
+  const baseUrl = expressBackend ? expressUrl : serverlessUrl;
   const helloApi = new RootApiClient(baseUrl, apiKey).helloApi();
 
   // Set up error handlers in case the API call fails
