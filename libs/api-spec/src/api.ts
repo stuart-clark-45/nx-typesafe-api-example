@@ -1,4 +1,4 @@
-import {EndpointDef, ErrorType, ReqOptions, ResOptions} from 'typesafe-api';
+import {EndpointDef, ErrorType, ReqOptions, ResOptions} from '@typesafe-api/core';
 
 // These are the options that will be sent with every request to our API. In this example
 // we are going to implement some dummy authentication for our API using the

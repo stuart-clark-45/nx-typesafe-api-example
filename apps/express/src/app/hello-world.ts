@@ -1,4 +1,4 @@
-import { Controller, sendError, TRequest, TResponse } from 'typesafe-api';
+import { Controller, sendError, TRequest, TResponse } from '@typesafe-api/express';
 import { HelloWorldEndpointDef } from '@nx-typesafe-api-example/api-spec';
 
 export const helloWorldController: Controller<HelloWorldEndpointDef> = (

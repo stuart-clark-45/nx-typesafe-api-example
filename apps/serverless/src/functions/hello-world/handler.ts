@@ -1,4 +1,4 @@
-import {createError, createHandler, TypesafeApiHandler} from '../../lib';
+import {createError, createHandler, TypesafeApiHandler} from '@typesafe-api/serverless';
 import { HelloWorldEndpointDef } from '@nx-typesafe-api-example/api-spec';
 
 export const typesafeHandler: TypesafeApiHandler<HelloWorldEndpointDef> = async (

@@ -1,4 +1,4 @@
-import {AbstractApiClient, createRouteRequest} from 'typesafe-api';
+import {AbstractApiClient, createRouteRequest} from '@typesafe-api/core';
 import {helloWoldRoute, HelloWorldEndpointDef} from './routes';
 import {DefaultReqOpts} from './api';
 

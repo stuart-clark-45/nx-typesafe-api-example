@@ -1,4 +1,4 @@
-import {ErrorType, ReqOptions, ResOptions, Route} from 'typesafe-api';
+import {ErrorType, ReqOptions, ResOptions, Route} from '@typesafe-api/core';
 import {DefaultErrorCodes, ExampleApiEndpoint} from '../api';
 
 

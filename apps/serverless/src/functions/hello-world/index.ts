@@ -1,4 +1,4 @@
-import {relativeToCWD, slsCreateFunction} from '../../lib';
+import {relativeToCWD, slsCreateFunction} from '@typesafe-api/serverless';
 import { helloWoldRoute } from '@nx-typesafe-api-example/api-spec';
 import { AWS } from '@serverless/typescript';
 

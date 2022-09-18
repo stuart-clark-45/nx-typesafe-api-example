@@ -1,12 +1,7 @@
-import {NextFunction, RequestHandler} from 'express';
+import { NextFunction, RequestHandler } from 'express';
 import { ExampleApiEndpoint } from '@nx-typesafe-api-example/api-spec';
-import {
-  ReqOptions,
-  ResOptions,
-  sendError,
-  TRequest,
-  TResponse,
-} from 'typesafe-api';
+import { ReqOptions, ResOptions } from '@typesafe-api/core';
+import { sendError, TRequest, TResponse } from '@typesafe-api/express';
 
 // Create a type that can be used to represent any endpoint in our API
 type AnyEndpointDef = ExampleApiEndpoint<ReqOptions, ResOptions>;
@@ -31,4 +26,5 @@ const handler = (
   });
 };
 
-export const authorize = (): RequestHandler => handler as unknown as RequestHandler;
+export const authorize = (): RequestHandler =>
+  handler as unknown as RequestHandler;

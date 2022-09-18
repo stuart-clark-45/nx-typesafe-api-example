@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
+import { ErrorHandlers, handleError } from '@typesafe-api/core';
 import {
-  ErrorHandlers,
-  handleError,
   HelloWorldEndpointDef,
   RootApiClient,
 } from '@nx-typesafe-api-example/api-spec';
@@ -9,17 +8,22 @@ import {
   Box,
   Button,
   CardHeader,
-  Container, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup,
+  Container,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
   TextField,
   Typography,
 } from '@material-ui/core';
 
 const expressUrl = 'http://localhost:7809';
-const serverlessUrl = ' http://localhost:7810/dev'
+const serverlessUrl = ' http://localhost:7810/dev';
 
 enum Backend {
   EXPRESS = 'express',
-  SERVERLESS = 'serverless'
+  SERVERLESS = 'serverless',
 }
 
 export function App() {
@@ -76,8 +80,16 @@ export function App() {
           onChange={(e) => setBackend(e.target.value as Backend)}
           value={backend}
         >
-          <FormControlLabel control={<Radio />} label="Express" value={Backend.EXPRESS} />
-          <FormControlLabel control={<Radio />} label="Serverless" value={Backend.SERVERLESS}/>
+          <FormControlLabel
+            control={<Radio />}
+            label="Express"
+            value={Backend.EXPRESS}
+          />
+          <FormControlLabel
+            control={<Radio />}
+            label="Serverless"
+            value={Backend.SERVERLESS}
+          />
         </RadioGroup>
       </FormControl>
       <form noValidate autoComplete="off centre">

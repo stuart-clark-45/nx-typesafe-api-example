@@ -1,5 +1,5 @@
 import express, { RequestHandler } from 'express';
-import { addRoute, ExpressRoute } from 'typesafe-api';
+import { addRoute, ExpressRoute } from '@typesafe-api/express';
 import { helloWorldController } from './app/hello-world';
 import {
   helloWoldRoute,
