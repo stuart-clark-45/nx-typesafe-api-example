@@ -28,9 +28,9 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",
-    "@typesafe-api/core": "^0.0.3",
-    "@typesafe-api/express": "^0.0.2",
-    "@typesafe-api/serverless": "^0.0.2",
+    "@typesafe-api/core": "^3.0.0",
+    "@typesafe-api/express": "^3.0.0",
+    "@typesafe-api/serverless": "^3.0.0",
     "aws-lambda": "^1.0.7",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
