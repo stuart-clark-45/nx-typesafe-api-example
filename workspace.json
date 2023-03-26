@@ -17,6 +17,12 @@
             "assets": ["libs/api-spec/*.md"]
           }
         },
+        "typesafe-open-api": {
+          "executor": "nx:run-commands",
+          "options": {
+            "command": "npx tsx node_modules/@typesafe-api/open-api/src/cli.js --tsConfigFile libs/api-spec/tsconfig.lib.json --output libs/api-spec/openapi.yml --title nx-typesafe-api-example --routes 'libs/api-spec/src/routes/**/*.ts'"
+          }
+        },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
