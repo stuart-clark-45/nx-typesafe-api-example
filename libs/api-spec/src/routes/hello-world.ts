@@ -1,13 +1,6 @@
 import {ErrorType, ReqOptions, ResOptions, Route} from '@typesafe-api/core';
 import {DefaultErrorCodes, ExampleApiEndpoint} from '../api';
 
-
-// Define the route at which the endpoint belongs
-export const helloWoldRoute: Route = {
-  method: 'get',
-  path: '/hello-world'
-};
-
 // Define the all parameters that are required to make the request
 export interface HelloWorldReq extends ReqOptions {
   query: {
@@ -31,3 +24,9 @@ export type HelloWorldErrors = ErrorType<DefaultErrorCodes|400>
 
 // Create the endpoint definition this type encapsulates the full endpoint spec
 export type HelloWorldEndpointDef = ExampleApiEndpoint<HelloWorldReq, HelloWorldResp, HelloWorldErrors>
+
+// Define the route at which the endpoint belongs
+export const helloWoldRoute: Route<HelloWorldEndpointDef> = {
+  method: 'get',
+  path: '/hello-world'
+};
