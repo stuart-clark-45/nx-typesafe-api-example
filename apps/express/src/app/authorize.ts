@@ -21,8 +21,10 @@ const handler = (
   // This error object is typesafe, including the status so you can only select from the
   // statuses given in {@link DefaultErrorCodes} (defined in the app spec)
   sendError(res, {
-    status: 403,
-    msg: 'Unauthorized',
+    statusCode: 403,
+    body: {
+      msg: 'Unauthorized',
+    },
   });
 };
 

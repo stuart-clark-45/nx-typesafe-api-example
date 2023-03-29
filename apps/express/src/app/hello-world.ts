@@ -1,7 +1,7 @@
 import { Controller, sendError, TRequest, TResponse } from '@typesafe-api/express';
 import { HelloWorldEndpointDef } from '@nx-typesafe-api-example/api-spec';
 
-export const helloWorldController: Controller<HelloWorldEndpointDef> = (
+export const helloWorldController: Controller<HelloWorldEndpointDef> = async (
   req: TRequest<HelloWorldEndpointDef>,
   res: TResponse<HelloWorldEndpointDef>
 ) => {
@@ -14,8 +14,10 @@ export const helloWorldController: Controller<HelloWorldEndpointDef> = (
     // This error object is typesafe, including the status so you can only select from the
     // statuses given in the endpoint definition
     return sendError(res, {
-      status: 400,
-      msg: "Surely your name isn't a number?? 😵",
+      statusCode: 400,
+      body: {
+        msg: "Surely your name isn't a number?? 😵",
+      }
     });
   }
 
