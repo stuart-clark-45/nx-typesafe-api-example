@@ -49,7 +49,7 @@ export function App() {
       if (!response) {
         throw err;
       }
-      setResponseText(response.data.msg);
+      setResponseText(response.data.body.msg);
     },
   };
 
