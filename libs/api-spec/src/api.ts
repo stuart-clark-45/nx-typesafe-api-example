@@ -1,8 +1,10 @@
 import {
+  AbstractEndpointDef,
   EndpointDef,
   ErrorType,
   ReqOptions,
   ResOptions,
+  TypesafeHttpError,
 } from '@typesafe-api/core';
 
 // These are the options that will be sent with every request to our API. In this example
@@ -28,6 +30,18 @@ export interface ApiErrorBody {
 export type ApiErrorType<S extends number> = ErrorType<S, ApiErrorBody>;
 
 export type AbstractApiErrorType = ApiErrorType<number>;
+
+export class ApiHttpError extends TypesafeHttpError<AbstractApiErrorType> {}
+
+// Writing a helper function like this can make it easier to throw errors and keep them typesafe
+export const throwHttpError = <T extends AbstractEndpointDef>(statusCode: T["errorType"]["statusCode"], msg: string) => {
+  throw new ApiHttpError({
+    statusCode: statusCode,
+    body: {
+      msg,
+    },
+  });
+};
 
 // Create an interface to help us build our endpoints, this just saves adding {@code DefaultReqOpts}
 // and {@code DefaultErrorType} to every endpoint we create
