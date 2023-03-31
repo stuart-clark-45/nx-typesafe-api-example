@@ -41,6 +41,41 @@
       },
       "tags": []
     },
+    "cdk-lambda": {
+      "root": "apps/cdk-lambda",
+      "projectType": "application",
+      "sourceRoot": "apps/cdk-lambda/src",
+      "targets": {
+        "deploy": {
+          "executor": "@ago-dev/nx-aws-cdk-v2:deploy",
+          "options": {}
+        },
+        "destroy": {
+          "executor": "@ago-dev/nx-aws-cdk-v2:destroy",
+          "options": {}
+        },
+        "bootstrap": {
+          "executor": "@ago-dev/nx-aws-cdk-v2:bootstrap",
+          "options": {}
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/cdk-lambda/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/cdk-lambda"],
+          "options": {
+            "jestConfig": "apps/cdk-lambda/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "express": {
       "root": "apps/express",
       "sourceRoot": "apps/express/src",
