@@ -16,7 +16,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-typesafe-api-example/api-spec": ["libs/api-spec/src/index.ts"]
+      "@nx-typesafe-api-example/api-spec": ["libs/api-spec/src/index.ts"],
+      "@nx-typesafe-api-example/lambda-handlers": [
+        "libs/lambda-handlers/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

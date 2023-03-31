@@ -233,6 +233,29 @@
       "tags": [],
       "implicitDependencies": ["frontend"]
     },
+    "lambda-handlers": {
+      "root": "libs/lambda-handlers",
+      "sourceRoot": "libs/lambda-handlers/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/lambda-handlers/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/lambda-handlers"],
+          "options": {
+            "jestConfig": "libs/lambda-handlers/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "serverless": {
       "root": "apps/serverless",
       "sourceRoot": "apps/serverless/src",
