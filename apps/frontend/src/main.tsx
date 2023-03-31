@@ -14,11 +14,7 @@ const Html = styled.html`
 ReactDOM.render(
   <StrictMode>
     <BrowserRouter>
-      <Html>
-        <body>
-          <App />
-        </body>
-      </Html>
+      <App />
     </BrowserRouter>
   </StrictMode>,
   document.getElementById('root')

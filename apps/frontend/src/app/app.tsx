@@ -1,20 +1,39 @@
 import React, { useState } from 'react';
+import { ErrorHandlers, handleError } from '@typesafe-api/core';
 import {
-  ErrorHandlers,
-  handleError,
   HelloWorldEndpointDef,
-  RootApiClient
+  RootApiClient,
 } from '@nx-typesafe-api-example/api-spec';
-import { Box, Button, CardHeader, Container, TextField, Typography } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  CardHeader,
+  Container,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 
-const baseUrl = 'http://localhost:7809';
+const expressUrl = 'http://localhost:7809';
+const serverlessUrl = ' http://localhost:7810/dev';
+
+enum Backend {
+  EXPRESS = 'express',
+  SERVERLESS = 'serverless',
+}
 
 export function App() {
   const [name, setName] = useState('');
   const [apiKey, setApiKey] = useState('');
   const [responseText, setResponseText] = useState('');
+  const [backend, setBackend] = useState(Backend.EXPRESS);
 
   // Init the API client
+  const baseUrl = backend === Backend.EXPRESS ? expressUrl : serverlessUrl;
   const helloApi = new RootApiClient(baseUrl, apiKey).helloApi();
 
   // Set up error handlers in case the API call fails
@@ -30,14 +49,15 @@ export function App() {
       if (!response) {
         throw err;
       }
-      setResponseText(response.data.msg);
+      setResponseText(response.data.body.msg);
     },
   };
 
   // Define onClick function that calls the endpoint and handles any errors
   const onClick = async () => {
     try {
-      const { msg } = await helloApi.helloWorld(name);
+      const response = await helloApi.helloWorld(name);
+      const { msg } = response.data;
       setResponseText(msg);
     } catch (err) {
       handleError(err as any, callHelloWorldError);
@@ -54,6 +74,24 @@ export function App() {
         variant="contained"
         style={{ textAlign: 'center' }}
       />
+      <FormControl>
+        <FormLabel id="demo-radio-buttons-group-label">Backend</FormLabel>
+        <RadioGroup
+          onChange={(e) => setBackend(e.target.value as Backend)}
+          value={backend}
+        >
+          <FormControlLabel
+            control={<Radio />}
+            label="Express"
+            value={Backend.EXPRESS}
+          />
+          <FormControlLabel
+            control={<Radio />}
+            label="Serverless"
+            value={Backend.SERVERLESS}
+          />
+        </RadioGroup>
+      </FormControl>
       <form noValidate autoComplete="off centre">
         <TextField
           label={nameLabel}
