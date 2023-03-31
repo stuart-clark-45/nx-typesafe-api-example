@@ -1,8 +1,9 @@
 import type { AWS } from '@serverless/typescript';
+import { slsCreateFunction } from '@typesafe-api/serverless';
 
 import helloWorld from './src/functions/hello-world';
 
-const serverlessConfiguration: AWS  = {
+const serverlessConfiguration: AWS = {
   service: 'nx-typesafe-api-serverless',
   frameworkVersion: '3',
   plugins: ['serverless-webpack', 'serverless-offline'],
@@ -16,20 +17,20 @@ const serverlessConfiguration: AWS  = {
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
-    }
+    },
   },
-  functions: { helloWorld },
+  functions: { helloWorld: slsCreateFunction(helloWorld) },
   package: { individually: true },
   custom: {
     webpack: {
-      webpackConfig: "webpack.config.js",
+      webpackConfig: 'webpack.config.js',
       includeModules: {
-        packagePath: '../../package.json'
+        packagePath: '../../package.json',
       },
-      packager: "npm",
-      packExternalModulesMaxBuffer: 204800
-    }
-  }
+      packager: 'npm',
+      packExternalModulesMaxBuffer: 204800,
+    },
+  },
 };
 
 module.exports = serverlessConfiguration;
