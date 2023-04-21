@@ -1,1 +1,1 @@
-export * from './lib/lambda-handlers';
+export * from './lib/functions/hello-world';

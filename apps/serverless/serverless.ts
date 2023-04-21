@@ -1,7 +1,7 @@
 import type { AWS } from '@serverless/typescript';
 import { slsCreateFunction } from '@typesafe-api/serverless';
 
-import helloWorld from './src/functions/hello-world';
+import { helloWorldFunctionDef } from '@nx-typesafe-api-example/lambda-functions';
 
 const serverlessConfiguration: AWS = {
   service: 'nx-typesafe-api-serverless',
@@ -19,7 +19,7 @@ const serverlessConfiguration: AWS = {
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
     },
   },
-  functions: { helloWorld: slsCreateFunction(helloWorld) },
+  functions: { helloWorld: slsCreateFunction(helloWorldFunctionDef) },
   package: { individually: true },
   custom: {
     webpack: {

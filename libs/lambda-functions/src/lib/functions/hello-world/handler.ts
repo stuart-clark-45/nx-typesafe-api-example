@@ -6,7 +6,7 @@ import {
 import {
   HelloWorldEndpointDef,
   throwHttpError,
-} from '@nx-typesafe-api-example/api-spec';
+} from '../../../../../../libs/api-spec/src'
 import middy from '@middy/core';
 
 const handlerFn: TypesafeApiHandler<HelloWorldEndpointDef> = async (
