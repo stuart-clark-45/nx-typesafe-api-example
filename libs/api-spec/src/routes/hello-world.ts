@@ -32,5 +32,5 @@ export type HelloWorldEndpointDef = ExampleApiEndpoint<
 // Define the route at which the endpoint belongs
 export const helloWoldRoute: Route<HelloWorldEndpointDef> = {
   method: 'get',
-  path: '/hello-world',
+  path: '/hello/world',
 };
