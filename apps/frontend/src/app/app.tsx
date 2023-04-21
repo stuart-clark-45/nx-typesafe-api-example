@@ -18,13 +18,17 @@ import {
   Typography,
 } from '@material-ui/core';
 
-const expressUrl = 'http://localhost:7809';
-const serverlessUrl = ' http://localhost:7810/dev';
-
 enum Backend {
   EXPRESS = 'express',
   SERVERLESS = 'serverless',
+  CDK_LAMBDA = 'cdk-lambda',
 }
+
+const baseUrls: Record<Backend, string> = {
+  [Backend.EXPRESS]: 'http://localhost:7809',
+  [Backend.SERVERLESS]: 'http://localhost:7810/dev',
+  [Backend.CDK_LAMBDA]: 'http://localhost:3000',
+};
 
 export function App() {
   const [name, setName] = useState('');
@@ -33,7 +37,7 @@ export function App() {
   const [backend, setBackend] = useState(Backend.EXPRESS);
 
   // Init the API client
-  const baseUrl = backend === Backend.EXPRESS ? expressUrl : serverlessUrl;
+  const baseUrl = baseUrls[backend];
   const helloApi = new RootApiClient(baseUrl, apiKey).helloApi();
 
   // Set up error handlers in case the API call fails
@@ -89,6 +93,11 @@ export function App() {
             control={<Radio />}
             label="Serverless"
             value={Backend.SERVERLESS}
+          />
+          <FormControlLabel
+            control={<Radio />}
+            label="CDK Lambda"
+            value={Backend.CDK_LAMBDA}
           />
         </RadioGroup>
       </FormControl>
