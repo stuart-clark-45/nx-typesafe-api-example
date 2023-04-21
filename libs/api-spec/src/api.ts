@@ -50,3 +50,5 @@ export type ExampleApiEndpoint<
   RespOpt extends ResOptions,
   E extends AbstractApiErrorType = ApiErrorType<DefaultErrorCodes>
 > = EndpointDef<DefaultReqOpts, ReqOpt, RespOpt, E>;
+
+export type AbstractExampleApiEndpoint = ExampleApiEndpoint<ReqOptions, ResOptions>;
