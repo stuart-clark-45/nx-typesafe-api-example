@@ -72,6 +72,24 @@
             "jestConfig": "apps/cdk-lambda/jest.config.ts",
             "passWithNoTests": true
           }
+        },
+        "serve": {
+          "dependsOn": ["^build", "build"],
+          "executor": "nx:run-commands",
+          "options": {
+            "command": "DOCKER_HOST=unix://$HOME/.docker/run/docker.sock sam local start-api -t dist/apps/cdk-lambda/api-stack.template.json"
+          }
+        },
+        "build": {
+          "inputs": [
+            "{projectRoot}/**/*",
+            "{workspaceRoot}/libs/lambda-functions/src/**/*"
+          ],
+          "executor": "nx:run-commands",
+          "options": {
+            "cwd": "apps/cdk-lambda",
+            "command": "cdk synth --no-staging"
+          }
         }
       },
       "tags": []
