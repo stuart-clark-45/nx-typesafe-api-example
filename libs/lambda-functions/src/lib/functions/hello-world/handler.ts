@@ -8,6 +8,7 @@ import {
   throwHttpError,
 } from '../../../../../../libs/api-spec/src'
 import middy from '@middy/core';
+import cors from '@middy/http-cors'
 
 const handlerFn: TypesafeApiHandler<HelloWorldEndpointDef> = async (
   event,
@@ -37,6 +38,7 @@ const handlerFn: TypesafeApiHandler<HelloWorldEndpointDef> = async (
 // Finally we need to add the typesafe api middleware to our handler. It can be useful to create a
 // function manage this and any other standard middleware your handlers use.
 export const handler = middy(handlerFn)
+  .use(cors())
   // Add the typesafe api middleware, this is responsible for parsing requests
   .use(typesafeApi())
   // Error handling middleware
