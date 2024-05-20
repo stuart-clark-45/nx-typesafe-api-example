@@ -42,7 +42,7 @@ export const handler = middy(handlerFn)
   // Error handling middleware
   .use(
     typesafeApiErrors({
-      // Custom logging functions can be added here, by default console.log will be used
+      // Custom logging functions can be added here, by default console.error will be used
       httpErrorLogFn: undefined,
       otherErrorLogFn: undefined,
       // The default error body that will be returned to users when an unhandled error occurs
